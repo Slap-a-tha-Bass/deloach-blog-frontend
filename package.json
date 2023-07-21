@@ -1,0 +1,19 @@
+{
+  "name": "frontend",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^2.8.2",
+    "astro-sanity": "^1.1.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}

@@ -1,0 +1,31 @@
+---
+import '@/styles/global.css';
+import type { Post } from '@/types.d.ts';
+import { getAllPosts } from '@/lib/api.js';
+import { urlForImage } from "@/lib/urlForImage.js";
+import PortableText from '@/lib/PortableText.astro';
+
+export async function getStaticPaths() {
+    const posts = await getAllPosts();
+    return posts.map((post: Post) => ({ params: { slug: post.slug.current }, props: { post }}))
+
+}
+const { post } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <main>
+      <h1>{post.title}</h1>
+        <img src={urlForImage(post.mainImage).url()} alt={post.title} />
+        <PortableText portableText={post.body} />
+    </main>
+  </body>
+</html>
